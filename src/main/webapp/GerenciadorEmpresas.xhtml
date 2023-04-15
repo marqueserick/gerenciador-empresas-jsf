@@ -1,41 +1,22 @@
 <!DOCTYPE html>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="WEB-INF/template/Layout.xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
 
-	<ui:define name="titulo">
-	Cadastro de Empresas
-</ui:define>
+	<meta charset="UTF-8" />
+	<title>SGE</title>
+	<h:outputStylesheet library="marqueserick" name="estilo.css" />
+</h:head>
 
-	<ui:define name="conteudo">
-		<f:metadata>
-			<f:viewAction action="#{gestaoEmpresasBean.todasEmpresas}" />
-		</f:metadata>
 
-		<h:form>
-			<p:dataTable value="#{gestaoEmpresasBean.listaEmpresas}"
-				var="empresa" emptyMessage="Nenhuma informação a ser exibida"
-				paginator="true" rows="10" paginatorPosition="bottom">
-				<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
-					<h:outputText value="#{empresa.razaoSocial}" />
-				</p:column>
+<body>
+	<header>
+		<h:graphicImage library="marqueserick" name="logo.png" />
+		<h:outputText value="Sistema Gestão Empresa"/>
+	</header>
+	<h:outputText value="Olá" />
+</body>
+<footer> Sistema baseado no curso online "JSF e PrimeFaces
+	Essencial" </footer>
 
-				<p:column headerText="Nome fantasia">
-					<h:outputText value="#{empresa.nomeFantasia}" />
-				</p:column>
-
-				<p:column headerText="Tipo empresa">
-					<h:outputText value="#{empresa.tipo}" />
-				</p:column>
-
-				<p:column headerText="Ramo atividade">
-					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
-	</ui:define>
-
-</ui:composition>
+</html>
