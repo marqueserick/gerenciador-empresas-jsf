@@ -30,5 +30,9 @@ public class EmpresaController implements Serializable {
 		return TipoEmpresa.values();
 	}
 	
+	public String navegarAjuda() {
+		return "AjudaGerenciador";
+	}
+	
 	
 }

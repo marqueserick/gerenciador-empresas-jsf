@@ -34,6 +34,8 @@
 			</h:selectOneMenu>
 			<h:inputHidden />
 			<h:commandButton value="Salvar" actionListener="#{empresaController.salvar}" />
+			
+			<h:commandLink value="Precisa de ajuda?" action="#{empresaController.navegarAjuda}" />
 		</h:panelGrid>
 
 		<h:dataTable value="#{[0,0]}">
