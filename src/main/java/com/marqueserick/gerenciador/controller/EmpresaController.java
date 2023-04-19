@@ -31,7 +31,7 @@ public class EmpresaController implements Serializable {
 	}
 	
 	public String navegarAjuda() {
-		return "AjudaGerenciador";
+		return "AjudaGerenciador?faces-redirect=true";
 	}
 	
 	
