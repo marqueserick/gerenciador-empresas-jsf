@@ -19,23 +19,66 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Razão social: " for="razaoSocial" />
-			<h:inputText id="razaoSocial"
-				value="#{empresaController.empresa.razaoSocial}" />
+			<h:panelGroup>
+				<h:inputText id="razaoSocial"
+					value="#{empresaController.empresa.razaoSocial}"
+					label="Razão Social" required="true" />
+				<h:message for="razaoSocial" />
+			</h:panelGroup>
 
 			<h:outputLabel value="Nome Fantasia: " for="nomeFantasia" />
 			<h:inputText id="nomeFantasia"
 				value="#{empresaController.empresa.nomeFantasia}" />
 
 			<h:outputLabel value="Tipo Empresa: " for="tipo" />
-			<h:selectOneMenu id="tipo" value="#{empresaController.empresa.tipo}">
-				<f:selectItem itemLabel="Selecione..."></f:selectItem>
-				<f:selectItems value="#{empresaController.tiposEmpresa}"
-					var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}" itemValue="#{tipoEmpresa}"></f:selectItems>
-			</h:selectOneMenu>
+			<h:panelGroup>
+				<h:selectOneMenu id="tipo" value="#{empresaController.empresa.tipo}"
+					label="Tipo Empresa" required="true">
+					<f:selectItem itemLabel="Selecione..."></f:selectItem>
+					<f:selectItems value="#{empresaController.tiposEmpresa}"
+						var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
+						itemValue="#{tipoEmpresa}"></f:selectItems>
+				</h:selectOneMenu>
+				<h:message for="tipo" />
+			</h:panelGroup>
+
+			<h:outputLabel value="CNPJ: " for="cnpj" />
+			<h:panelGroup>
+				<h:inputText id="cnpj" value="#{empresaController.empresa.cnpj}"
+					label="CNPJ">
+					<f:validateLength minimum="18" maximum="18" />
+				</h:inputText>
+				<h:message for="cnpj" />
+			</h:panelGroup>
+
+
+			<h:outputLabel value="Data Fundação: " for="dataFundacao" />
+			<h:panelGroup>
+				<h:inputText id="dataFundacao"
+					value="#{empresaController.empresa.dataFundacao}"
+					label="Data Fundacao">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				<h:message for="dataFundacao" />
+			</h:panelGroup>
+
+			<h:outputLabel value="Faturamento Anual: " for="faturamento" />
+			<h:panelGroup>
+				<h:inputText id="faturamento"
+					value="#{empresaController.empresa.faturamento}"
+					label="Faturamento">
+					<f:convertNumber pattern="#,##0.00" />
+					<f:validateDoubleRange minimum="0"/>
+				</h:inputText>
+				<h:message for="faturamento" />
+			</h:panelGroup>
+
 			<h:inputHidden />
-			<h:commandButton value="Salvar" actionListener="#{empresaController.salvar}" />
-			
-			<h:commandLink value="Precisa de ajuda?" action="#{empresaController.navegarAjuda}" />
+			<h:commandButton value="Salvar"
+				actionListener="#{empresaController.salvar}" />
+
+			<h:commandLink value="Precisa de ajuda?"
+				action="#{empresaController.navegarAjuda}" />
 		</h:panelGrid>
 
 		<h:dataTable value="#{[0,0]}">
