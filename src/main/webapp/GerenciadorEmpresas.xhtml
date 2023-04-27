@@ -22,30 +22,32 @@
 	<h2>Cadastro de Empresas</h2>
 
 	<div id="conteudo">
-		<p:dataTable value="#{empresaController.empresas}" var="empresa"
-			emptyMessage="Nenhuma empresa cadastrada" paginator="true" rows="10"
-			paginatorPosition="bottom">
-			
-			<p:column headerText="Razao Social">
-				<h:outputText value="#{empresa.razaoSocial}" />
-			</p:column>
+		<h:form>
+			<p:dataTable value="#{empresaController.empresas}" var="empresa"
+				emptyMessage="Nenhuma empresa cadastrada" paginator="true" rows="10"
+				paginatorPosition="bottom">
 
-			<p:column headerText="Nome Fantasia">
-				<h:outputText value="#{empresa.nomeFantasia}" />
-			</p:column>
+				<p:column headerText="Razao Social" sortBy="#{empresa.razaoSocial}">
+					<h:outputText value="#{empresa.razaoSocial}" />
+				</p:column>
 
-			<p:column headerText="Tipo Empresa">
-				<h:outputText value="#{empresa.tipo}" />
-			</p:column>
+				<p:column headerText="Nome Fantasia" sortBy="#{empresa.nomeFantasia}">
+					<h:outputText value="#{empresa.nomeFantasia}" />
+				</p:column>
 
-			<p:column headerText="Ramo Atividade">
-				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
-			</p:column>
+				<p:column headerText="Tipo Empresa" sortBy="#{empresa.tipo}">
+					<h:outputText value="#{empresa.tipo}" />
+				</p:column>
 
-			<p:column headerText="CNPJ">
-				<h:outputText value="#{empresa.cnpj}" />
-			</p:column>
-		</p:dataTable>
+				<p:column headerText="Ramo Atividade" sortBy="#{empresa.ramoAtividade.descricao}">
+					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
+				</p:column>
+
+				<p:column headerText="CNPJ" sortBy="#{empresa.cnpj}">
+					<h:outputText value="#{empresa.cnpj}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 	</div>
 	<footer> Sistema baseado no curso online "JSF e PrimeFaces
 		Essencial" </footer>
