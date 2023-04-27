@@ -23,7 +23,9 @@
 
 	<div id="conteudo">
 		<p:dataTable value="#{empresaController.empresas}" var="empresa"
-			emptyMessage="Nenhuma empresa cadastrada">
+			emptyMessage="Nenhuma empresa cadastrada" paginator="true" rows="10"
+			paginatorPosition="bottom">
+			
 			<p:column headerText="Razao Social">
 				<h:outputText value="#{empresa.razaoSocial}" />
 			</p:column>
