@@ -1,38 +1,34 @@
 package com.marqueserick.gerenciador.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.marqueserick.gerenciador.model.Empresa;
-import com.marqueserick.gerenciador.model.TipoEmpresa;
+import com.marqueserick.gerenciador.repository.EmpresaRepository;
 
 @Named("empresaController")
-@RequestScoped
+@ViewScoped
 public class EmpresaController implements Serializable {
+	
+	
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Empresa empresa = new Empresa();
+	@Inject
+	private EmpresaRepository repository;
 	
-	public void salvar() {
-		System.out.println("Razao Social: " + this.empresa.getRazaoSocial() +
-				"\nNome Fantasia: "+ this.empresa.getNomeFantasia() +
-				"\nTipo Empresa: "+ this.empresa.getTipo().getDescricao());
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
+	private List<Empresa> empresas;
+	
+	public void listar() {
+		empresas = repository.listar();
 	}
 	
-	public TipoEmpresa[] getTiposEmpresa() {
-		return TipoEmpresa.values();
+	public List<Empresa> getEmpresas() {
+		return empresas;
 	}
-	
-	public String navegarAjuda() {
-		return "AjudaGerenciador?faces-redirect=true";
-	}
-	
 	
 }

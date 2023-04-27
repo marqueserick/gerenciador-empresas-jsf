@@ -39,7 +39,7 @@ public class EmpresaRepository implements Serializable {
 		return query.getResultList();
 	}
 	
-	public List<Empresa> todas() {
+	public List<Empresa> listar() {
          return manager.createQuery("from Empresa", Empresa.class).getResultList();
     }
 

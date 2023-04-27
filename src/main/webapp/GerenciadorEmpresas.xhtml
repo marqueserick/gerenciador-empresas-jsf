@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 	<meta charset="UTF-8" />
 	<title>SGE</title>
 	<h:outputStylesheet library="marqueserick" name="estilo.css" />
+	<f:metadata>
+		<f:viewAction action="#{empresaController.listar}"></f:viewAction>
+	</f:metadata>
 </h:head>
 
 
@@ -15,91 +19,32 @@
 		<h:graphicImage library="marqueserick" name="logo.png" />
 		<h:outputText value="Sistema Gestão Empresa" />
 	</header>
+	<h2>Cadastro de Empresas</h2>
 
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Razão social: " for="razaoSocial" />
-			<h:panelGroup>
-				<h:inputText id="razaoSocial"
-					value="#{empresaController.empresa.razaoSocial}"
-					label="Razão Social" required="true" />
-				<h:message for="razaoSocial" />
-			</h:panelGroup>
+	<div id="conteudo">
+		<p:dataTable value="#{empresaController.empresas}" var="empresa"
+			emptyMessage="Nenhuma empresa cadastrada">
+			<p:column headerText="Razao Social">
+				<h:outputText value="#{empresa.razaoSocial}" />
+			</p:column>
 
-			<h:outputLabel value="Nome Fantasia: " for="nomeFantasia" />
-			<h:inputText id="nomeFantasia"
-				value="#{empresaController.empresa.nomeFantasia}" />
+			<p:column headerText="Nome Fantasia">
+				<h:outputText value="#{empresa.nomeFantasia}" />
+			</p:column>
 
-			<h:outputLabel value="Tipo Empresa: " for="tipo" />
-			<h:panelGroup>
-				<h:selectOneMenu id="tipo" value="#{empresaController.empresa.tipo}"
-					label="Tipo Empresa" required="true">
-					<f:selectItem itemLabel="Selecione..."></f:selectItem>
-					<f:selectItems value="#{empresaController.tiposEmpresa}"
-						var="tipoEmpresa" itemLabel="#{tipoEmpresa.descricao}"
-						itemValue="#{tipoEmpresa}"></f:selectItems>
-				</h:selectOneMenu>
-				<h:message for="tipo" />
-			</h:panelGroup>
+			<p:column headerText="Tipo Empresa">
+				<h:outputText value="#{empresa.tipo}" />
+			</p:column>
 
-			<h:outputLabel value="CNPJ: " for="cnpj" />
-			<h:panelGroup>
-				<h:inputText id="cnpj" value="#{empresaController.empresa.cnpj}"
-					label="CNPJ">
-					<f:validateLength minimum="18" maximum="18" />
-				</h:inputText>
-				<h:message for="cnpj" />
-			</h:panelGroup>
+			<p:column headerText="Ramo Atividade">
+				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
+			</p:column>
 
-
-			<h:outputLabel value="Data Fundação: " for="dataFundacao" />
-			<h:panelGroup>
-				<h:inputText id="dataFundacao"
-					value="#{empresaController.empresa.dataFundacao}"
-					label="Data Fundacao">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:inputText>
-				<h:message for="dataFundacao" />
-			</h:panelGroup>
-
-			<h:outputLabel value="Faturamento Anual: " for="faturamento" />
-			<h:panelGroup>
-				<h:inputText id="faturamento"
-					value="#{empresaController.empresa.faturamento}"
-					label="Faturamento">
-					<f:convertNumber pattern="#,##0.00" />
-					<f:validateDoubleRange minimum="0"/>
-				</h:inputText>
-				<h:message for="faturamento" />
-			</h:panelGroup>
-
-			<h:inputHidden />
-			<h:commandButton value="Salvar"
-				actionListener="#{empresaController.salvar}" />
-
-			<h:commandLink value="Precisa de ajuda?"
-				action="#{empresaController.navegarAjuda}" />
-		</h:panelGrid>
-
-		<h:dataTable value="#{[0,0]}">
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Razão Social" />
-				</f:facet>
-
-				<h:outputText value="Razao Consultoria ME" />
-			</h:column>
-
-			<h:column>
-				<f:facet name="header">
-					<h:outputText value="Nome Fantasia" />
-				</f:facet>
-
-				<h:outputText value="EM Tech" />
-			</h:column>
-		</h:dataTable>
-	</h:form>
-
+			<p:column headerText="CNPJ">
+				<h:outputText value="#{empresa.cnpj}" />
+			</p:column>
+		</p:dataTable>
+	</div>
 	<footer> Sistema baseado no curso online "JSF e PrimeFaces
 		Essencial" </footer>
 </h:body>
