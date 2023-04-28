@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	template="WEB-INF/template/Layout.xhtml">
-	
+
 	<ui:define name="titulo">Cadastro de Empresas</ui:define>
 	<ui:define name="conteudo">
 
@@ -14,6 +14,22 @@
 		</f:metadata>
 
 		<h:form>
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:inputText placeholder="Pesquisar..." size="30"/>
+					<p:commandButton type="button" value="Pesquisar"
+						icon="pi pi pi-search" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:commandButton type="button" value="Adicionar" icon="pi pi-plus" />
+
+					<p:commandButton title="Editar" icon="pi pi-file-edit" />
+					<p:commandButton title="Excluir" icon="pi pi-trash" styleClass="ui-button-danger" />
+					<p:commandButton title="Exportar CSV" icon="pi pi-file-excel" styleClass="ui-button-success" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
 			<p:dataTable value="#{empresaController.empresas}" var="empresa"
 				emptyMessage="Nenhuma empresa cadastrada" paginator="true" rows="10"
 				paginatorPosition="bottom">

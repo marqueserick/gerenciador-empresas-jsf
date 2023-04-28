@@ -38,3 +38,11 @@ h1 {
 img{
 	width:2%;
 }
+
+button.ui-button{
+	margin-right: .5rem;
+}
+
+.ui-toolbar{
+	margin-bottom: 20px;
+}
